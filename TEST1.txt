@@ -1,0 +1,45 @@
+*** Settings ***
+
+Library       Selenium2Library
+Library       Collections
+Library     String
+Library   OperatingSystem
+
+
+
+*** Variables ***
+
+
+
+*** Test Cases ***
+Verification of Federal News
+   
+    Federal Test
+   
+    Compare Test
+   
+*** Keywords ***
+Federal Test
+    Wait until page does not contain element   xpath=//*[@class="bento-busyloader-svg bento-busyloader-svg-default"]  timeout=50s
+    Get All Links
+    Wait Until Page Contains Element  //*[@id="mainView"]/nav-menu/div[2]/ul/li[1]/a  timeout=50s
+    Click Element  //*[@id="mainView"]/nav-menu/div[2]/ul/li[1]/a
+    Set Focus To Element  //*[@id="mainView"]/nav-menu/div[2]/ul/li[1]/a
+
+    Wait Until Page Contains Element  //*[@id="mainView"]/nav-menu/div[2]/ul/li[1]/ul[2]/li[1]/ul/li[1]/h5  timeout=40s
+    click element  //*[@id="mainView"]/nav-menu/div[2]/ul/li[1]/ul[2]/li[1]/ul/li[1]/h5
+    Set Focus To Element  //*[@id="mainView"]/nav-menu/div[2]/ul/li[1]/ul[2]/li[1]/ul/li[1]/h5
+
+    Wait Until Page Contains Element   //*[@id="mainView"]/nav-menu/div[2]/ul/li[1]/ul[2]/li[2]/a[5]  timeout=50s
+    click element  //*[@id="mainView"]/nav-menu/div[2]/ul/li[1]/ul[2]/li[2]/a[5]
+    Set Focus To Element  //*[@id="mainView"]/nav-menu/div[2]/ul/li[1]/ul[2]/li[2]/a[5]
+Compare Test  
+     Wait until page does not contain element   xpath=//*[@class="bento-busyloader-svg bento-busyloader-svg-default"]  timeout=50s
+	 wait until page contains element  //*[@id="documentsGrid"]/div[2]  timeout=1minute
+     wait until page contains element  //*[@id="documentsGrid"]/div[2]/div[10]/div[2]/div[1]/div[1]/div/i   timeout=1minute
+	 click element  //*[@id="documentsGrid"]/div[2]/div[10]/div[2]/div[1]/div[1]/div/i
+	 
+    wait until page contains element  //*[@id="documentsGrid"]/div[2]/div[10]/div[2]/div[1]/div[8]/div/i  timeout=3minutes
+    click element   //*[@id="documentsGrid"]/div[2]/div[10]/div[2]/div[1]/div[8]/div/i
+    wait until page contains element  //*[@id="documentsGrid"]/div[1]/div/ul/li[2]/a  timeout=3minutes
+	click element  //*[@id="documentsGrid"]/div[1]/div/ul/li[2]/a
